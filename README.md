@@ -1,7 +1,7 @@
 # qb-dumplocker
  Locks The Server and files from the little nasty cheaters
 
- next step to add permissions
+his version of qb-dumplocker is designed with advanced security measures and is not a simple drag-and-drop resource. It provides enhanced protection for your server files while allowing customization through the config.lua file, including admin options
 
  Step 1: Update config.lua
 1.1 Open the config.lua file inside the qb-dumplocker folder.
