@@ -1,0 +1,83 @@
+qb-dumplocker
+High-Security QBCore Resource for DumpLocker
+
+This version of qb-dumplocker is designed with advanced security measures and is not a simple drag-and-drop resource. It provides enhanced protection for your server files while allowing customization through the config.lua file, including admin options.
+
+Installation
+Folder Structure:
+
+Create the following folder structure in your QBCore server's resources directory:
+
+plaintext
+Copy code
+resources/
+   qb-dumplocker/
+      client/
+         client.lua
+      server/
+         server.lua
+      config.lua
+      test.lua
+      fxmanifest.lua
+Configuration:
+
+Open config.lua and customize the configuration variables as needed. For admin options, set Config.RestrictAdmins to true.
+
+lua
+Copy code
+Config = {}
+
+-- Add any configuration variables here
+Config.EnableAntiDump = true
+Config.RestrictAdmins = true -- Set this to true to restrict admins from the resource
+Update Server Initialization:
+
+Open fxmanifest.lua and add config.lua to the script list:
+
+lua
+Copy code
+fx_version 'cerulean'
+games { 'rdr3', 'gta5' }
+
+author 'Your Name'
+description 'Dumplocker resource for QBCore'
+version '1.0.0'
+
+client_script 'config.lua'
+client_script 'client/client.lua'
+server_script 'server/server.lua'
+shared_script 'config.lua'
+Identify Admins:
+
+In your server.cfg, assign admin identifiers:
+
+lua
+Copy code
+# Players
+add_principal identifier.license:admin1 qb-dumplocker.god # Admin 1
+add_principal identifier.license:admin2 qb-dumplocker.god # Admin 2
+Usage
+To utilize admin options and further secure your server:
+
+Read README.md:
+
+The README.md file contains essential information about configuring permissions, adding more admin groups, and setting up permissions for specific commands.
+
+Set Permissions Using Commands:
+
+While in the server, use the /addpermission [id] [permission] command to set user permissions dynamically.
+
+Allowing Commands to Specific Permissions:
+
+In qb-core/config.lua, find QBConfig.Server.Permissions and add more groups like 'leo'. Then, in your server.cfg, assign principals for these new groups.
+
+Example Command:
+
+If you added a 'leo' group, a command for only 'leo' members can be created:
+
+lua
+Copy code
+QBCore.Commands.Add('spikes', 'Place spike strips', {}, false, function(source)
+    -- Run code
+end, 'leo')
+Now, your qb-dumplocker resource is not only high-secured but also configured with advanced options for admin control and permissions customization. Adjust the identifiers and conditions as needed for your server setup.
